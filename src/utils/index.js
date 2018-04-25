@@ -14,7 +14,11 @@ export function getDataTransferItems(event) {
     } else if (dt.items && dt.items.length) {
       // During the drag even the dataTransfer.files is null
       // but Chrome implements some drag store, which is accesible via dataTransfer.items
-      dataTransferItemsList = dt.items
+      for (let i = 0; i < dt.items.length; i += 1) {
+        if (dt.items[i].kind === 'file') {
+          dataTransferItemsList.push(dt.items[i])
+        }
+      }
     }
   } else if (event.target && event.target.files) {
     dataTransferItemsList = event.target.files
