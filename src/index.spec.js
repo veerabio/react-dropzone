@@ -29,7 +29,8 @@ describe('Dropzone', () => {
       {
         name: 'file1.pdf',
         size: 1111,
-        type: 'application/pdf'
+        type: 'application/pdf',
+        kind: 'file'
       }
     ]
 
@@ -37,12 +38,14 @@ describe('Dropzone', () => {
       {
         name: 'cats.gif',
         size: 1234,
-        type: 'image/gif'
+        type: 'image/gif',
+        kind: 'file'
       },
       {
         name: 'dogs.jpg',
         size: 2345,
-        type: 'image/jpeg'
+        type: 'image/jpeg',
+        kind: 'file'
       }
     ]
   })
