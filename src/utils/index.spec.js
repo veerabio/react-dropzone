@@ -4,17 +4,20 @@ const files = [
   {
     name: 'file1.pdf',
     size: 1111,
-    type: 'application/pdf'
+    type: 'application/pdf',
+    kind: 'file'
   },
   {
     name: 'cats.gif',
     size: 1234,
-    type: 'image/gif'
+    type: 'image/gif',
+    kind: 'file'
   },
   {
     name: 'dogs.jpg',
     size: 2345,
-    type: 'image/jpeg'
+    type: 'image/jpeg',
+    kind: 'file'
   }
 ]
 
@@ -82,9 +85,9 @@ describe('getDataTransferItems', () => {
         files
       }
     }
-    expect(Object.keys(files[2])).toHaveLength(3)
+    expect(Object.keys(files[2])).toHaveLength(4)
     getDataTransferItems(event, true)
-    expect(Object.keys(files[2])).toHaveLength(3)
+    expect(Object.keys(files[2])).toHaveLength(4)
   })
 })
 
