@@ -6,6 +6,7 @@ export const supportMultiple =
     : true
 
 export function getDataTransferItems(event) {
+  let isFiles = true
   let dataTransferItemsList = []
   if (event.dataTransfer) {
     const dt = event.dataTransfer
@@ -14,6 +15,7 @@ export function getDataTransferItems(event) {
     } else if (dt.items && dt.items.length) {
       // During the drag even the dataTransfer.files is null
       // but Chrome implements some drag store, which is accesible via dataTransfer.items
+      isFiles = false
       for (let i = 0; i < dt.items.length; i += 1) {
         if (dt.items[i].kind === 'file') {
           dataTransferItemsList.push(dt.items[i])
@@ -24,7 +26,7 @@ export function getDataTransferItems(event) {
     dataTransferItemsList = event.target.files
   }
   // Convert from DataTransferItemsList to the native Array
-  return Array.prototype.slice.call(dataTransferItemsList)
+  return { files: Array.prototype.slice.call(dataTransferItemsList), isFiles }
 }
 
 // Firefox versions prior to 53 return a bogus MIME type for every file drag, so dragovers with

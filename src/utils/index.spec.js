@@ -24,8 +24,8 @@ const files = [
 describe('getDataTransferItems', () => {
   it('should return an array', () => {
     const res = getDataTransferItems({})
-    expect(res).toBeInstanceOf(Array)
-    expect(res).toHaveLength(0)
+    expect(res.files).toBeInstanceOf(Array)
+    expect(res.files).toHaveLength(0)
   })
 
   it('should get dataTransfer before using target', () => {
@@ -38,8 +38,8 @@ describe('getDataTransferItems', () => {
       }
     }
     const res = getDataTransferItems(event)
-    expect(res).toBeInstanceOf(Array)
-    expect(res).toHaveLength(3)
+    expect(res.files).toBeInstanceOf(Array)
+    expect(res.files).toHaveLength(3)
   })
 
   it('should use dataTransfer.items if files is not defined', () => {
@@ -52,8 +52,8 @@ describe('getDataTransferItems', () => {
       }
     }
     const res = getDataTransferItems(event)
-    expect(res).toBeInstanceOf(Array)
-    expect(res).toHaveLength(3)
+    expect(res.files).toBeInstanceOf(Array)
+    expect(res.files).toHaveLength(3)
   })
 
   it('should use event.target if dataTransfer is not defined', () => {
@@ -63,8 +63,8 @@ describe('getDataTransferItems', () => {
       }
     }
     const res = getDataTransferItems(event)
-    expect(res).toBeInstanceOf(Array)
-    expect(res).toHaveLength(3)
+    expect(res.files).toBeInstanceOf(Array)
+    expect(res.files).toHaveLength(3)
   })
 
   it('should prioritize dataTransfer.files over .files', () => {
@@ -75,8 +75,8 @@ describe('getDataTransferItems', () => {
       }
     }
     const res = getDataTransferItems(event)
-    expect(res).toBeInstanceOf(Array)
-    expect(res).toHaveLength(2)
+    expect(res.files).toBeInstanceOf(Array)
+    expect(res.files).toHaveLength(2)
   })
 
   it('should not mutate data', () => {
