@@ -99,8 +99,8 @@ class Dropzone extends React.Component {
       this.dragTargets.push(evt.target)
     }
 
-    const files = getDataTransferItems(evt)
-    if (files && files.length) {
+    const { files, isFiles } = getDataTransferItems(evt)
+    if (isFiles || (files && files.length)) {
       this.setState({
         isDragActive: true, // Do not rely on files for the drag state. It doesn't work in Safari.
         draggedFiles: files
